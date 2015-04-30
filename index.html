@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Clickymap!</title>
+  <link rel="stylesheet" href="leaflet.css" />
+  <script src="leaflet.js"></script>
+  <script src="jquery.min.js"></script>
+  <style>
+body {
+	margin:0;
+}
+#map {
+	position: absolute;
+	width: 70%;
+	height: 100%;
+	cursor: crosshair;
+}
+#output {
+	position: absolute;
+	width: 30%;
+	height: 100%;
+	right: 0;
+	background-color: #ccd;
+	font-family: monospace;
+	text-align:left;
+	overflow-y: auto;
+	font-size: 80%;
+}
+  </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <textarea id="output"></textarea>
+<script>
+var map = L.map('map').setView([50.93564,-1.39614], 17);
+
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 19
+}).addTo(map);
+var first=true;
+function onMapClick(e) 
+{ 
+	var RES=100000; 
+	var ll = "[ "+ (Math.round(e.latlng.lat*RES)/RES)+" , "+(Math.round(e.latlng.lng*RES)/RES)+" ]";
+	$('#output').val( $('#output').val()+"\n "+ll +" ");
+}
+map.on('click', onMapClick);
+</script>
+</body>
+</html>

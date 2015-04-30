@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+<!--
+Clickymap by Christopher Gutteridge cjg@ecs.soton.ac.uk
+
+Clickymap is public domain. Free to modify and reuse for any purpose.
+
+(Leaflet & jQuery are still subject to their respective licenses)
+-->
 <head>
   <meta charset="utf-8"/>
   <title>Clickymap!</title>
@@ -27,11 +34,33 @@ body {
 	overflow-y: auto;
 	font-size: 80%;
 }
+#controls {
+	position: absolute;
+	width: 20%;
+	left: 45%;
+	top: 2%;
+	background-color: rgba( 0,0,0,0.3);
+	padding: 0.3em;
+	color: white;
+}
+#controls a {
+	display: inline-block;
+	color: white;
+	font-size:80%;
+}
   </style>
 </head>
 
 <body>
     <div id="map"></div>
+    <div id="controls">
+      Output: <select id="mode">
+        <option value="geojson">GEO-JSON</option>
+        <option value="turtle">Turtle</option>
+        <option value="rdfxml">RDF+XML</option>
+      </select>
+<a href='http://prefix.cc/geo,xsd.ttl'>Turtle Namespaces</a>
+    </div>
     <textarea id="output"></textarea>
 <script>
 var map = L.map('map').setView([50.93564,-1.39614], 17);
@@ -43,10 +72,28 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 var first=true;
 function onMapClick(e) 
 { 
-	var RES=100000; 
-	var ll = "[ "+ (Math.round(e.latlng.lat*RES)/RES)+" , "+(Math.round(e.latlng.lng*RES)/RES)+" ]";
-	$('#output').val( $('#output').val()+"\n "+ll +" ");
+	var RES=100000; // rounding 
+	var lat = Math.round(e.latlng.lat*RES)/RES;
+	var lng = Math.round(e.latlng.lng*RES)/RES;
+	var add;
+	if( $('#mode').val() == 'rdfxml' )
+	{
+		add = "    <geo:lat rdf:datatype=\"http://www.w3.org/2001/XMLSchema#float\">"+lat+"</geo:lat>\n    <geo:long rdf:datatype=\"http://www.w3.org/2001/XMLSchema#float\">"+lng+"</geo:long>\n";
+	}
+	if( $('#mode').val() == 'turtle' )
+	{
+		add = " geo:lat \""+lat+"\"^^xsd:float; geo:long \""+lng+"\"^^xsd:float .\n";
+	}
+	if( $('#mode').val() == 'geojson' )
+	{
+		add = "\n [ "+lat+", "+lng+" ] ";
+	}
+	$('#output').val( $('#output').val()+add );
+	$('#output').focus();
 }
+$(document).ready(function(){
+	$('#output').focus();
+});
 map.on('click', onMapClick);
 </script>
 </body>

@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html>
-<!--
-Clickymap by Christopher Gutteridge cjg@ecs.soton.ac.uk
-
-Clickymap is public domain. Free to modify and reuse for any purpose.
-
-(Leaflet & jQuery are still subject to their respective licenses)
--->
 <head>
   <meta charset="utf-8"/>
-  <title>Clickymap!</title>
+  <title>Ventnor Stories</title>
   <link rel="stylesheet" href="leaflet.css" />
   <script src="leaflet.js"></script>
   <script src="jquery.min.js"></script>
@@ -85,7 +78,7 @@ $(document).ready(function(){
     var geo = navigator.geolocation;
     setInterval( function() {  
       geo.getCurrentPosition(
-        function(p){alert( JSON.stringify(p));},
+        geo_update,
         function(p){alert(22);alert( JSON.stringify(p));},
         {enableHighAccuracy:true});
     }, 5000 );
@@ -111,8 +104,12 @@ $(document).ready(function(){
 
     // p : geolocation object
     geo_update = function(p){
-      alert(23);
       var user_ll = [p.coords.longitude-data.tl.lat, p.coords.longitude-data.tl.long ];
+      var circle = L.circle(user_ll, 3, {
+          color: 'green',
+          fillColor: '#0f0',
+          fillOpacity: 0.5
+      }).addTo(map);
     }
     initGPS();
 

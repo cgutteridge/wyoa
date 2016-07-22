@@ -13,8 +13,15 @@ body {
 #map {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
+#debug {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  top: 80%;
+}
+
 #controls {
   position: absolute;
   width: 20%;
@@ -47,6 +54,7 @@ body {
     <div id="map">
       <div id="init">Initialising Data Stuff</div>
     </div>
+    <div id="debug"></div>
 <script>
 
 $(document).ready(function(){
@@ -82,6 +90,10 @@ $(document).ready(function(){
         function(p){alert(22);alert( JSON.stringify(p));},
         {enableHighAccuracy:true});
     }, 5000 );
+    geo.getCurrentPosition(
+      geo_update,
+      function(p){alert(22);alert( JSON.stringify(p));},
+      {enableHighAccuracy:true});
   }
   function error_callback() {
     alert( "GEOFAIL");
@@ -100,11 +112,11 @@ $(document).ready(function(){
           fillColor: '#f03',
           fillOpacity: 0.5
       }).addTo(map);
-    }
-
+    }	
     // p : geolocation object
     geo_update = function(p){
-      var user_ll = [p.coords.longitude-data.tl.lat, p.coords.longitude-data.tl.long ];
+      var user_ll = [p.coords.longitude, p.coords.longitude ];
+      $("#debug").text( JSON.stringify( p ));
       var circle = L.circle(user_ll, 3, {
           color: 'green',
           fillColor: '#0f0',

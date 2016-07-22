@@ -115,7 +115,7 @@ $(document).ready(function(){
     }	
     // p : geolocation object
     geo_update = function(p){
-      var user_ll = [p.coords.longitude, p.coords.longitude ];
+      var user_ll = [p.coords.latitude, p.coords.longitude ];
       $("#debug").text( JSON.stringify( p ));
       var circle = L.circle(user_ll, 3, {
           color: 'green',

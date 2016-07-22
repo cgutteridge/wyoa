@@ -59,6 +59,15 @@ body {
 $(document).ready(function(){
   var game;
 
+  function doom(text) {
+    $('#init').text(text);
+  }
+
+  if (!"geolocation" in navigator) {
+    doom("Sorry, you need geolocation for this.");
+    return;
+  }
+
   $.ajax({
     url: "game.json",
     context: document.body
@@ -67,22 +76,19 @@ $(document).ready(function(){
     game.nodeIds = Object.keys( game.nodes );
     debugGame();
   }).fail(function() {
-    alert('failed to load database. Sorry.');
+    doom('failed to load database. Sorry.');
   });
 
   var geo_update = function(p) { alert('meh'); }
 
   function initGPS() {
-    if(geoPosition.init()){  // Geolocation Initialisation
-      setInterval( function() {  
-        geoPosition.getCurrentPosition(
-          function(p){alert( JSON.stringify(p));},
-          function(p){alert( JSON.stringify(p));},
-          {enableHighAccuracy:true});
-      }, 5000 );
-    } else {
-      alert("No geo, no game");
-    }
+    var geo = navigator.geolocation;
+    setInterval( function() {  
+      geo.getCurrentPosition(
+        function(p){alert( JSON.stringify(p));},
+        function(p){alert(22);alert( JSON.stringify(p));},
+        {enableHighAccuracy:true});
+    }, 5000 );
   }
   function error_callback() {
     alert( "GEOFAIL");
@@ -108,6 +114,7 @@ $(document).ready(function(){
       alert(23);
       var user_ll = [p.coords.longitude-data.tl.lat, p.coords.longitude-data.tl.long ];
     }
+    initGPS();
 
 
   }

@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
-if(geoPosition.init()){  // Geolocation Initialisation
-  geoPosition.getCurrentPosition(
+<script>
+if ("geolocation" in navigator) {
+  var geo = navigator.geolocation;
+  geo.getCurrentPosition(
     function(p){alert( JSON.stringify(p));},
-    function(p){alert( JSON.stringify(p));},
+    function(p){alert(22);alert( JSON.stringify(p));},
     {enableHighAccuracy:true});
+} else {
+  alert( "NO GEO" );
+}
+</script>

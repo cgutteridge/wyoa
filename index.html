@@ -15,86 +15,107 @@ Clickymap is public domain. Free to modify and reuse for any purpose.
   <script src="jquery.min.js"></script>
   <style>
 body {
-	margin:0;
+  margin:0;
 }
 #map {
-	position: absolute;
-	width: 70%;
-	height: 100%;
-	cursor: crosshair;
-}
-#output {
-	position: absolute;
-	width: 30%;
-	height: 100%;
-	right: 0;
-	background-color: #ccd;
-	font-family: monospace;
-	text-align:left;
-	overflow-y: auto;
-	font-size: 80%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 #controls {
-	position: absolute;
-	width: 20%;
-	left: 45%;
-	top: 2%;
-	background-color: rgba( 0,0,0,0.3);
-	padding: 0.3em;
-	color: white;
+  position: absolute;
+  width: 20%;
+  left: 45%;
+  top: 2%;
+  background-color: rgba( 0,0,0,0.3);
+  padding: 0.3em;
+  color: white;
 }
 #controls a {
-	display: inline-block;
-	color: white;
-	font-size:80%;
+  display: inline-block;
+  color: white;
+  font-size:80%;
 }
+#init {
+  background-color: black;
+  font-size: 4em;
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding-top: 4em;
+}
+  
   </style>
 </head>
 
 <body>
-    <div id="map"></div>
-    <div id="controls">
-      Output: <select id="mode">
-        <option value="geojson">GEO-JSON</option>
-        <option value="turtle">Turtle</option>
-        <option value="rdfxml">RDF+XML</option>
-      </select>
-<a href='http://prefix.cc/geo,xsd.ttl'>Turtle Namespaces</a>
+    <div id="map">
+      <div id="init">Initialising Data Stuff</div>
     </div>
-    <textarea id="output"></textarea>
 <script>
-var map = L.map('map').setView([50.93564,-1.39614], 17);
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-    maxZoom: 19
-}).addTo(map);
-var first=true;
-function onMapClick(e) 
-{ 
-	var RES=100000; // rounding 
-	var lat = Math.round(e.latlng.lat*RES)/RES;
-	var lng = Math.round(e.latlng.lng*RES)/RES;
-	var add;
-	if( $('#mode').val() == 'rdfxml' )
-	{
-		add = "    <geo:lat rdf:datatype=\"http://www.w3.org/2001/XMLSchema#float\">"+lat+"</geo:lat>\n    <geo:long rdf:datatype=\"http://www.w3.org/2001/XMLSchema#float\">"+lng+"</geo:long>\n";
-	}
-	if( $('#mode').val() == 'turtle' )
-	{
-		add = " geo:lat \""+lat+"\"^^xsd:float; geo:long \""+lng+"\"^^xsd:float .\n";
-	}
-	if( $('#mode').val() == 'geojson' )
-	{
-		add = "\n [ "+lat+", "+lng+" ] ";
-	}
-	$('#output').val( $('#output').val()+add );
-	$('#output').focus();
-}
 $(document).ready(function(){
-	$('#output').focus();
+  var game;
+
+  $.ajax({
+    url: "game.json",
+    context: document.body
+  }).done(function(loadedData) {
+    game = loadedData;
+    game.nodeIds = Object.keys( game.nodes );
+    debugGame();
+  }).fail(function() {
+    alert('failed to load database. Sorry.');
+  });
+
+  var geo_update = function(p) { alert('meh'); }
+
+  function initGPS() {
+    if(geoPosition.init()){  // Geolocation Initialisation
+      setInterval( function() {  
+        geoPosition.getCurrentPosition(
+          function(p){alert( JSON.stringify(p));},
+          function(p){alert( JSON.stringify(p));},
+          {enableHighAccuracy:true});
+      }, 5000 );
+    } else {
+      alert("No geo, no game");
+    }
+  }
+  function error_callback() {
+    alert( "GEOFAIL");
+  }
+
+  function debugGame() {
+    var map = L.map('map').setView([50.93564,-1.39614], 17);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 19
+    }).addTo(map);
+    for(var i=0;i<game.nodeIds.length;i++) {
+      var node = game.nodes[game.nodeIds[i]];
+      var circle = L.circle(node.ll, node.size, {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.5
+      }).addTo(map);
+    }
+
+    // p : geolocation object
+    geo_update = function(p){
+      alert(23);
+      var user_ll = [p.coords.longitude-data.tl.lat, p.coords.longitude-data.tl.long ];
+    }
+
+
+  }
+
 });
-map.on('click', onMapClick);
+
+
+
 </script>
 </body>
 </html>

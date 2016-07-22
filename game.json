@@ -1,0 +1,33 @@
+{
+   "start":["start"],
+   "nodes" : {
+      "start" : {
+         "title":"Start",
+         "ll" : [ 50.93308, -1.38897 ],
+         "size": 10,
+         "content": "Hello",
+         "next": ["a"]
+      },
+      "a" : {
+         "title":"Node A",
+         "ll" : [ 50.93341, -1.38964 ],
+         "size": 10,
+         "content": "Hello",
+         "next": ["b"]
+      },
+      "b" : {
+         "title":"Node B",
+         "ll" : [ 50.93402, -1.38928 ],
+         "size": 10,
+         "content": "Hello",
+         "next": ["c"]
+      },
+      "c" : {
+         "title":"Node C",
+         "ll" : [ 50.93292, -1.38991 ],
+         "size": 10,
+         "content": "Hello",
+         "next": []
+      }
+   }
+}

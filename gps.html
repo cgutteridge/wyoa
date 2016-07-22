@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html>
+if(geoPosition.init()){  // Geolocation Initialisation
+  geoPosition.getCurrentPosition(
+    function(p){alert( JSON.stringify(p));},
+    function(p){alert( JSON.stringify(p));},
+    {enableHighAccuracy:true});

@@ -2,32 +2,40 @@
    "start":["start"],
    "nodes" : {
       "start" : {
-         "title":"Start",
-         "ll" : [ 50.93308, -1.38897 ],
-         "size": 10,
-         "content": "Hello",
-         "next": ["a"]
+         "title":"A heated exchange",
+         "ll" : [ 50.59466,-1.20618 ] ,
+         "size": 15,
+         "content": " <p>Although he is not tall, he would be good looking without that expression. He is arguing in whispers at a table in the Ventnor Exchange. He is clearly English, but it's harder to decide the accent of the woman opposite.</p> <p>Whatever they are arguing about seems to have shaken both of them and she walks out. He looks like he is about to call after her, but his phone rings. Without looking at the caller he just answers and asks \"did you find it?\". He presses his hand over the phone struggling to hear over the noise of other customers. In frustration he heads outside.</p>",
+         "next": ["stcath","clock"]
       },
-      "a" : {
-         "title":"Node A",
-         "ll" : [ 50.93341, -1.38964 ],
-         "size": 10,
-         "content": "Hello",
-         "next": ["b"]
+      "stcath" : {
+         "title":"Outside the Church",
+         "ll" : [ 50.59453,-1.20695 ] ,
+         "size": 15,
+         "content": "<p>He catches up with her putting away the phone. She is waiting by the churchyard.</p><p>\"Did they find it yet?\"</p><p>No, not yet. Why Were you staring at that old gravestone? Someone you knew?</p><p>Of course not, but...</p><p>You were thinking about what happened again. It wasn't your fault.</p><p>\"No, it was your's\". Her words are cruel, but there seems to be no malice in her delivery.</p><p>They walk on.</p>",
+         "next": ["alpine","seaview"]
       },
-      "b" : {
-         "title":"Node B",
-         "ll" : [ 50.93402, -1.38928 ],
-         "size": 10,
-         "content": "Hello",
-         "next": ["c"]
+      "clock" : {
+         "title":"Under the clock",
+         "ll" : [ 50.59497,-1.20586 ] ,
+         "size": 15,
+         "content": "<p>He catches up with her, putting away the phone. She is staring up at the clock, comparing the time to her vintage watch.</p><p>\"Did he find it?\" she asks, \"we don't have much time.\"</p><p>He waits a beat, before nodding.</p><p>\"Is there are problem?\"</p><p>\"Not exactly...\", he's stalling for time to compose his response. \"It's not... not what you were expecting.\"</p><p>\"This is no time to be coy. Come on, you can explain on the way.\"</p>",
+         "next": []
       },
-      "c" : {
-         "title":"Node C",
-         "ll" : [ 50.93292, -1.38991 ],
-         "size": 10,
-         "content": "Hello",
+      "seaview" : {
+         "title":"Seaview",
+         "ll" : [ 50.59416,-1.20737 ] ,
+         "size": 15,
+         "content": "<p>Oooo pretty.</p>",
+         "next": []
+      },
+      "alpine" : {
+         "title":"Upwards!",
+         "ll" : [ 50.59486,-1.2082 ] ,
+         "size": 15,
+         "content": "<p>steepp.</p>",
          "next": []
       }
    }
 }
+

@@ -28,7 +28,7 @@ $(document).ready(function(){
     $('#activateButton').hide();
 
     var node = game.nodes[inRangeId];
-    
+
     var icon = L.icon( { 
       iconUrl: 'http://data.southampton.ac.uk/map-icons/Nature/snail.png',
       iconSize: [32, 37],
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
     setWaypoints( node.next );
 
-    var chapter = $('<div class="chapter"></div>');
+    var chapter = $('<div class="chapter"><a name="'+inRangeId+'"></a></div>');
     chapter.append( $('<h3>'+node.title+'</h3>' ));
     $('#chapters').append( chapter );
     for( i=0; i<node.content.length; i++ ) {
@@ -75,8 +75,13 @@ $(document).ready(function(){
     }
 
 
+    
     $('#mapView').hide();
     $('#storyView').show();
+
+    window.location.hash = '#'+inRangeId;
+    
+    //setTimeout( function() { $('#storyArea').scrollTop(chapter.offset().top); }, 1000 ); 
     storyRoute.push( inRangeId );
     lastNodeId = inRangeId; 
 

@@ -30,10 +30,12 @@ html, body {
 
 .gameButton img {
   display: block;
+  width: 100%;
 }
 .gameButton {
   position: absolute;
   background-color: white;
+  max-width: 40%;
   padding: 3px;
   border: solid 3px black;
   color: red;
@@ -66,13 +68,17 @@ html, body {
   width: 100%;
   overflow-y: scroll;
 }
-#story { 
+#storyMain img { 
+  max-width: 95%;
+}
+#storyMain { 
   padding: 1em;
 }
 #storyEnd {
   padding-bottom: 4em;
-  border: solid 1px #ccc;
-  padding: 3px;
-  background-color: #999;
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+  padding: 0.5em 1em;
+  background-color: #ccc;
   margin-bottom: 200px;
 }

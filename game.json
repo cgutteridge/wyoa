@@ -132,15 +132,24 @@
              "He hurries down the road, trying to shake off the melloncolly ghost of the past. Arriving at this junction he can't think which way to go."
          ],
          "choice":["Turn left uphill to go back and find the girl or carry on down the road."],
-         "next": ["seb3"]
+         "next": ["seb3","seb4"]
       },
       "seb3": {
          "title": "Police Station",
          "ll" : [ 50.59428,-1.20578 ],
          "size": 15,
          "content":["He wanders up the lane realising as he goes that this is not the right way. Deciding this is a dead end he had no option but to turn back."],
+         "next": ["seb4"]
+      },
+      "seb4": {
+         "title": "Sea View",
+         "ll" : [ 50.593784, -1.205025 ] ,
+         "size": 15,
+         "content":[
+            "He arrives at some ubiquitous seaside benches. Looking out across the harbour and the bay, he thinks about what weary people had rested here after climing up from the beach, from the old pier which smells of tar on the old timbers the coal smoke from the steam boat moored up alongside. Did any of them sit here and wonder what future traveller would be looking back contemplating them? Will some future traveler look back and think about the travelers of today? <img src='pier.jpg' />" ],
          "next": []
       }
+
    }
 }
 

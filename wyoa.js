@@ -44,6 +44,7 @@ $(document).ready(function(){
       });
       wayline.addTo(map);
     }
+/*
     if( !fromLine ) {
       fromLine = L.polyline([node.ll,node.ll],{
         color: 'green', 
@@ -51,6 +52,7 @@ $(document).ready(function(){
       });
       fromLine.addTo(map);
     }
+*/
 
     setWaypoints( node.next );
 
@@ -130,7 +132,7 @@ $(document).ready(function(){
   }
 
 
-  function runGame(debug = false) {
+  function runGame(debug) {
 
     map = L.map('map').setView([50.59466,-1.20618], 18);
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
@@ -159,7 +161,7 @@ $(document).ready(function(){
   }
 
   function setUserPos( ll ) {
-    map.setView( ll );
+    // map.setView( ll ); // don't centre on the player (automatically)
     if( !userMarker ) {
       var icon = L.icon( { 
         iconUrl: 'http://data.southampton.ac.uk/map-icons/Stores/hats.png',

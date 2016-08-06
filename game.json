@@ -4,10 +4,10 @@
       "start" : {
          "title":"A heated exchange",
          "ll" : [ 50.59466,-1.20618 ] ,
-         "size": 15,
+         "size": 20,
          "content": [
-            "Although he is not tall, he would be good looking without that expression. He is arguing in whispers at a table in the Ventnor Exchange. He is clearly English, but it's harder to decide the accent of the woman opposite.",
-            "Whatever they are arguing about seems to have shaken both of them and she walks out. He looks like he is about to call after her, but his phone rings. Without looking at the caller he just answers and asks \"did you find it?\". He presses his hand over the phone struggling to hear over the noise of other customers. In frustration he heads outside."
+            "Although he is not tall, the man is good looking. His expression, however, is ugly. He is arguing in whispers at a table in the Ventnor Exchange. He is clearly English, but it's harder to decide the accent of the woman opposite.",
+            "Whatever they are arguing about seems to have shaken both of them and she walks out. He looks like he is about to call after her, but his phone rings. Without checking who's calling, he answers and asks \"did you find it?\". He presses his hand over the phone struggling to hear over the noise of other customers. In frustration he heads outside."
         ],
 	"choice": ["Did they find it?","If no, walk up to the church.","If yes, walk down to the corner."],
         "next": ["stcath","clock"]
@@ -19,12 +19,13 @@
          "content": [
              "He catches up with her putting away the phone. She is waiting by the churchyard.",
              "\"Did they find it yet?\"",
-             "\"No, not yet. Why Were you staring at that old gravestone? Someone you knew?\"",
+             "\"No, not yet. Why were you staring at that old gravestone? Someone you knew?\"",
              "\"Of course not, but...\"",
              "\"You were thinking about what happened again. It wasn't your fault.\"",
-             "\"No, it was your's\". Her words are cruel, but there seems to be no malice in her delivery.",
+             "\"No, it was your's\". Her words are cruel, but there's no malice in her delivery.",
              "They walk on." ],
-         "next": ["alpine","seaview"]
+	"choice": ["He either storms off down Hambrough road or crosses the road to stare out at the ocean."],
+         "next": ["seaview","seb1"]
       },
       "clock" : {
          "title":"Under the clock",
@@ -85,7 +86,7 @@
       },
       "memorial" : {
          "title":"Biker Bandstand Bash",
-         "ll" : [50.59162,-1.21639 ],
+         "ll" : [50.59231,-1.21586],
          "size": 15,
          "content": [ 
             "The park is full of the bikers you saw earlier, a long line of bikes is parked on the road outside the park. Music is coming from the band stand. You've heard this band before, they're great. This is just the kind of event you like to go to. You feel at home.",
@@ -99,7 +100,7 @@
 
       "memorial2" : {
          "title":"Goodbye",
-         "ll" : [50.59159,-1.21701],
+         "ll" : [50.59245,-1.21557],
          "size": 15,
          "content": [ 
             "\"I lied earlier\" she says, \"it wasn't your fault for giving them your old bike, it was the idiot who hit them. I just say dumb stuff when I'm upset\".",
@@ -112,15 +113,32 @@
          "next": []
       },
 
-
-
-
-
-      "alpine" : {
-         "title":"Upwards!",
-         "ll" : [ 50.59486,-1.2082 ] ,
+      "seb1" : {
+         "title":"Hambourgh Road",
+         "ll" : [ 50.59435,-1.20658 ] ,
          "size": 15,
-         "content": ["steep!"],
+         "content": [
+             "He storms off saying \"I just want to be left alone\".",
+             "He stops in the middle of the road, a wave of timeless vertigo passing over him.",
+             "It passes like a fruit machine with each reel clicking into place, leaving him right here right now. He looks up at the houses lining the street. All those windows, the lovers, the travelers, the lost. What stories could they tell?"
+         ],
+         "next": ["seb2"]
+      },
+      "seb2" : {
+         "title":"Which Way?",
+         "ll" : [ 50.59381,-1.20558 ],
+         "size": 15,
+         "content": [
+             "He hurries down the road, trying to shake off the melloncolly ghost of the past. Arriving at this junction he can't think which way to go."
+         ],
+         "choice":["Turn left uphill to go back and find the girl or carry on down the road."],
+         "next": ["seb3"]
+      },
+      "seb3": {
+         "title": "Police Station",
+         "ll" : [ 50.59428,-1.20578 ],
+         "size": 15,
+         "content":["He wanders up the lane realising as he goes that this is not the right way. Deciding this is a dead end he had no option but to turn back."],
          "next": []
       }
    }

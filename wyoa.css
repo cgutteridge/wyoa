@@ -28,11 +28,13 @@ html, body {
   bottom: 2%;
 }
 
+.gameButton img {
+  display: block;
+}
 .gameButton {
-  width: 20%;
   position: absolute;
   background-color: white;
-  padding: 0.3em;
+  padding: 3px;
   border: solid 3px black;
   color: red;
   cursor: pointer;
@@ -72,5 +74,5 @@ html, body {
   border: solid 1px #ccc;
   padding: 3px;
   background-color: #999;
-  margin-bottom: 3em;
+  margin-bottom: 200px;
 }

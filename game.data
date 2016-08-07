@@ -1,0 +1,198 @@
+
+ID: start 
+TITLE:A heated exchange
+LL:  50.59466,-1.20618
+SIZE: 20
+CONTENT: 
+Although he is not tall, the man is good looking. His expression, however, is ugly. He is arguing in whispers at a table in the Ventnor Exchange. He is clearly English, but it's harder to decide the accent of the woman opposite.
+Whatever they are arguing about seems to have shaken both of them and she walks out. He looks like he is about to call after her, but his phone rings. Without checking who's calling, he answers and asks "did you find it?". He presses his hand over the phone struggling to hear over the noise of other customers. In frustration he heads outside.
+CHOICE: Did they find it? 
+If no, walk up to the church.
+If yes, walk down to the corner.
+NEXT: stcath,clock
+
+ID: stcath 
+TITLE:Outside the Church
+LL:  50.59453,-1.20695
+SIZE: 15
+CONTENT: 
+He catches up with her putting away the phone. She is waiting by the churchyard.
+"Did they find it yet?"
+"No, not yet. Why were you staring at that old gravestone? Someone you knew?"
+"Of course not, but..."
+"You were thinking about what happened again. It wasn't your fault."
+"No, it was your's". Her words are cruel, but there's no malice in her delivery.
+CHOICE: He either storms off down Hambrough road or crosses the road to stare out at the ocean.
+NEXT: seaview,seb1
+
+ID: clock 
+TITLE:Under the clock
+LL:  50.59497,-1.20586
+SIZE: 15
+CONTENT: 
+He catches up with her, putting away the phone. She is staring up at the clock, comparing the time to her vintage watch.
+"Did he find it?" she asks, "we don't have much time."
+He waits a beat, before nodding.
+"Is there are problem?"
+"Not exactly...", he's stalling for time to compose his response. "It's not... not what you were expecting."
+"This is no time to be coy. Come on, you can explain on the way."
+NEXT: rose
+
+ID: seaview 
+TITLE:The long view
+LL:  50.59416,-1.20737
+SIZE: 15
+CONTENT:  
+"Well I guess it's too late now" he says, "There's less than an hour to go".
+"Sorry for snapping earler. Thanks for trying."
+NEXT: standrews
+
+ID: standrews 
+TITLE:One way system
+LL:  50.59408,-1.20997
+SIZE: 15
+CONTENT:  
+The are both seeming calmer now. She asks "Are you sure this is the right way?"
+"Yeah, I grew up here, remember?"
+NEXT: belzig
+
+ID: belzig 
+TITLE:A flock of bikers
+LL:  50.59386,-1.21264
+SIZE: 15
+CONTENT:  
+A rumble comes from back the way they've been walking, and a noisy moterbike grumbles past, followed by another and another. There are a real mixture flowing past. Some are crisp and modern. Some are vintage. The same thing is true of their riders - some of the older bearded chaps with well worn leathers, but now and then are less "scene" men, and a few women, usally riding the newer bikes.
+NEXT: parkgate
+
+ID: parkgate 
+TITLE:The Park Gate
+LL: 50.59289,-1.21519
+SIZE: 15
+CONTENT:  
+The man has stopped at the gate.
+"I'm not sure I can do this"
+"They were my cousin. It's family for me." she says
+"...and my friend."
+"Come on, we have to."
+At this moment, his phone buzzes and he looks at the screen.
+"Oh, thank god, they found it.
+NEXT: memorial
+
+ID: memorial 
+TITLE:Biker Bandstand Bash
+LL: 50.59231,-1.21586
+SIZE: 15
+CONTENT:  
+The park is full of the bikers you saw earlier, a long line of bikes is parked on the road outside the park. Music is coming from the band stand. You've heard this band before, they're great. This is just the kind of event you like to go to. You feel at home.
+The man goes up and talks to a chap with a laptop fiddling with some screens next to the bandstand. He hands over his phone and they fiddle around with files for a little while. Then he walks back to her.
+"Sorted?"
+"Yup"
+"OK, lets take a step back and see how it looks."
+NEXT: memorial2
+
+
+ID: memorial2 
+TITLE:Goodbye
+LL: 50.59245,-1.21557
+SIZE: 15
+CONTENT:  
+"I lied earlier" she says, "it wasn't your fault for giving them your old bike, it was the idiot who hit them. I just say dumb stuff when I'm upset".
+The digital screens around the bandstand all show the picture of the three of you the day he gave you the bike. You look so happy.
+"Do you ever pretend they are still here with us, in spirit?"
+"That would be nice", he says, staring right through you, "but no. Dead is dead."
+"But you're glad you came?"
+"Yeah... goodbye mate."
+
+
+ID: seb1 
+TITLE: Hambourgh Road
+LL:  50.59435,-1.20658
+SIZE: 15
+CONTENT: 
+He storms off saying "I just want to be left alone".
+He stops in the middle of the road, a wave of timeless vertigo passing over him.
+It passes like a fruit machine with each reel clicking into place, leaving him right here right now. He looks up at the houses lining the street. All those windows, the lovers, the travelers, the lost. What stories could they tell?
+NEXT: seb2
+
+ID: seb2 
+TITLE: Which Way?
+LL:  50.59381,-1.20558
+SIZE: 15
+CONTENT: 
+He hurries down the road, trying to shake off the melancholy ghost of the past. Arriving at this junction he can't think which way to go.
+CHOICE: Turn left uphill to go back and find the girl or carry on down the road.
+NEXT: seb3,seb4
+
+ID: seb3
+TITLE: Police Station
+LL:  50.59428,-1.20578
+SIZE: 15
+CONTENT:
+He wanders up the lane realising as he goes that this is not the right way. Deciding this way would be a mistake end he turns back. One more mistake in a  life of errors.
+NEXT: seb4
+
+ID: seb4
+TITLE: Sea View
+LL:  50.593784, -1.205025
+SIZE: 7
+CONTENT:
+He arrives at some ubiquitous seaside benches. Looking out across the harbour and the bay, he thinks about what weary people had rested here after climing up from the beach, from the old pier which smells of tar on the old timbers the coal smoke from the steam boat moored up alongside. Did any of them sit here and wonder what future traveller would be looking back contemplating them? Will some future traveler look back and think about the travelers of today
+<img src='pier.jpg' />
+
+ID: rose
+TITLE: The hitch
+LL: 50.59473,-1.20548
+SIZE: 15
+CONTENT: 
+"So what's the hitch?"
+"They say it's... unstable."
+"Ah... unstable position or intensity?"
+"Er, both."
+NEXT: pierst
+
+ID: pierst
+LL: 50.59444,-1.20494
+SIZE: 15
+TITLE: Getting a fix
+CONTENT: 
+She looks worried and thinks for a moment... "Did they send you a location? How far?"
+"Only a few hundred metres... but moving."
+"Well let's move!" she says. 
+"Hold on", I'm just getting the location on a map..." 
+He shows her a map on his phone screen. It's on a patch of grass over there.. or at least it was five minutes ago."
+"Finally", she says running in the direction indicated by his map.
+NEXT: dud1
+
+ID: dud1
+LL: 50.59403,-1.20354 
+TITLE: Future Phone
+SIZE: 15
+CONTENT: "It should be somewhere around here..."
+"I can't see it."
+She pulls out her phone. It's screen seems to project images several inches above and below it's surface. It's showing the immediate area in 3D, complete with tiny versions of the couple. indecipherable symbols overlay the model, blinking on and off.
+"Holy crap!" he says, unable to resist the lure of new tech.
+"Down boy. This ain't the time... Damn, it's too vague to get a lock."
+NEXT: dud2
+
+ID: dud2
+LL: 50.59361,-1.20276
+TITLE: Scanning
+SIZE: 30
+CONTENT: 
+She is walking up and down the little park. Using her futuristic phone to scan for her objective. 
+"Er, is that it", asks the man, pointing at a shimmer hovering just over the edge of the cliff and slowly moving further out.
+NEXT: dud3
+
+ID: dud3
+TITLE: Flying anachromisms
+SIZE: 10
+LL: 50.59344,-1.20227
+CONTENT:
+"Yeah, it's never easy is it?"
+"I wouldn't know... I wish we'd had more time."
+"Well, them's the breaks," she says, and tosses him her phone "You like this so much, keep it."
+While he's distracted by the flying anachronism she braces herself and takes a running jump at the glimmer. By the time he looks up she's gone. 
+<img src='portal.jpg' />
+
+
+

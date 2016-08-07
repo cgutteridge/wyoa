@@ -91,7 +91,7 @@ $(document).ready(function(){
   } );
     
   if (!("geolocation" in navigator)) {
-    doom("Sorry, you need geolocation for this.");
+    doom("Sorry, you need geolocation for this system to work. Either it's disabled or your phone don't do that.");
     return;
   }
 
@@ -101,11 +101,12 @@ $(document).ready(function(){
   }
 
   $.ajax({
-    url: "game.json",
+    url: "data.php",
     context: document.body
   }).done(function(loadedData) {
     game = loadedData;
     game.nodeIds = Object.keys( game.nodes );
+    doom("Pay no attention to the manatee wearing the kaftan.");
     runGame(debug);
   }).fail(function() {
     doom('failed to load database. Sorry.');

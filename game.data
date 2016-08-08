@@ -1,4 +1,5 @@
 
+
 ID: start 
 TITLE:A heated exchange
 LL:  50.59466,-1.20618
@@ -128,8 +129,8 @@ TITLE: Police Station
 LL:  50.59428,-1.20578
 SIZE: 15
 CONTENT:
-He wanders up the lane realising as he goes that this is not the right way. Deciding this way would be a mistake end he turns back. One more mistake in a  life of errors.
-NEXT: seb4
+He wanders up the lane realising as he goes that this is not the right way. He turns back. One more mistake in a life of errors.
+NEXT: back
 
 ID: seb4
 TITLE: Sea View
@@ -137,7 +138,17 @@ LL:  50.593784, -1.205025
 SIZE: 7
 CONTENT:
 He arrives at some ubiquitous seaside benches. Looking out across the harbour and the bay, he thinks about what weary people had rested here after climing up from the beach, from the old pier which smells of tar on the old timbers the coal smoke from the steam boat moored up alongside. Did any of them sit here and wonder what future traveller would be looking back contemplating them? Will some future traveler look back and think about the travelers of today
+He blinks and finds himself in the present again. Is that her walking down the hill he can see?
 <img src='pier.jpg' />
+CHOICE: He either follows her to the Winter Gardens or watches her from a distance down the steps.
+NEXT: seb5,seb6
+
+ID: seb5 
+TITLE: Welcome to the Jungle 
+LL: 50.59375,-1.20547 
+SIZE: 7 
+CONTENT: His plan was to maintain a distance, hide in the bushes and watch from his hidden view point but he quickly became preoccupied with beating his way through the bushes. Where did this path lead he wondered? Would there even be anywhere to sit at the end. By the time he got there and turned around to see if he could spot her she has already locked on to him with her uncanny counterespionage abilities. She stands hand on hips halfway down the cascades walkway. He sheepishly makes his way down to her. 
+NEXT: seb7
 
 ID: rose
 TITLE: The hitch
@@ -194,5 +205,62 @@ CONTENT:
 While he's distracted by the flying anachronism she braces herself and takes a running jump at the glimmer. By the time he looks up she's gone. 
 <img src='portal.jpg' />
 
+ID:back
+TITLE: Back on Track
+LL: 50.59381,-1.20555i
+His mood lightens as he walks back down the lane, sometimes you just have to let go of your mistakes and move on. He stops, a bar of music drifting on the wind catches his ear. Downhill, she would have gone downhill and found some music. He felt he was back on the right track.
+NEXT: seb4
 
+ID: seb5
+TITLE: Winter Gardens
+LL:  50.59373,-1.20482
+SIZE: 15
+CONTENT:
+As he reaches the building called The Winter Gardens, he recalls a conversation he'd had where somebody told him that Rod Steward had played there once. He imagines all those teenage boys and girls, with the cheesy overpowering 70's cologne and the old style lipstick like red Vaseline all sticky and smeary. At some point in the night Rod would have played "if you think I'm sexy", people danced, cigarettes in hand, warm pints of bitter. Somebody kissed their crush for the first time, somebody walked home alone crushed. 
+He realises he has stopped in the middle of the path like an idiot lost in time again. She is leaning against the railings watching him. As their eyes met she turns and goes on down the walkway with a smirking shake of the head. He follows her down. 
+NEXT: seb7
+
+ID: seb7
+TITLE: The Shelter
+LL:  50.59351,-1.20465
+SIZE: 15
+CONTENT:
+He reaches the shelter to find her spinning around on the poles supporting the roof miming acrobatics. She does a full 360 degree spin of one pole only to let go at just the right point so that she carried on to the other pole where she would grab on and do another 360 degree spin. 
+"Are you OK?" he says. 
+She plops herself on the bench, saying "yeah, I'm fine" in her odd accent "are you over yourself?" she adds, raising an eyebrow. 
+"You know what this place is called?" he asks, looking at the map on his phone trying to avoid her question. 
+"Rene Howe Walk" he informs her. 
+"Who the hell is she?" the girl asks, 
+"I'm not sure" comes the reply. 
+They both take a moment to prod their devices, trying to find out who this Rene Howe might be. 
+"Apparently he was a minor footballer back in the beginning of the 21st century" she said "that's now" he said "and I got a feeling this thing is too old to be named after him". 
+"Hey, it says here that it's impossible to touch both of those poles simultaneously" she interjects.
+Shortly after, they walk on down Rene Howe walk rubbing their near dislocated shoulders laughing.  
+NEXT: seb8
+
+ID: seb8
+TITLE: The Fountain
+LL:  50.59324,-1.20571
+SIZE: 15
+CONTENT: They arrive at the bottom of the walkway, they can hear the sound of music now, the chattering of voices. At the end of the railings is an odd stone structure, "what is that?" she asks. 
+They circle it reading the inscription and touching the fittings. "I guess it's for people who can't afford to drink the beer" she says and they walk on. 
+<img src='fountain.jpg' />
+CHOICE: To take one last diversion before following the sound of music head out to the end of the sea wall. Otherwise carry on up to the bandstand. 
+NEXT: seb9, seb10
+
+ID: seb9
+TITLE: Looking Back
+LL:  50.59226,-1.20519
+SIZE: 15
+CONTENT: They walk out along the harbour wall, the sounds of the town now diminishing behind them. As they reach the end they look out to sea, distant ships pass on the horizon. The sea swells, birds wheel and squawk overhead. "It's funny how you think of towns growing slowly over time, civilisation slowly but inevitably moving forward.". 
+She looks at him as he stared back at the town with unfocused eyes. "In ancient times they used to think time was cyclic, that the seasons would come and go, empires would rise and fall but not true progress would be made. Now people think that time will see a ceaseless progression, growth, development, expansion" he carried on distantly. "If only they knew" she said in her peculiar accent with not a hint of sadness, more resentment.
+They stand in silence for a moment longer then she says "come on, as long as we are here I need a drink."
+<img src='lookback.jpg' />
+NEXT: seb10
+
+ID: seb10
+TITLE: Band Stand
+LL:  50.59284,-1.20565
+SIZE: 15
+CONTENT: They flash their wristbands, walk past the door staff and up the stairs. Music playing, colourful lights of the bar, peopling mingling and enjoying themselves. "when in Rome" she said looking at him though a lock of hair half covering her face and grinned. "So this is where we ended up then, doesn't seem like anything out of the ordinary." he said, checking his wallet and propping up the bar. "You should know by now", she said "it's not where you end up, it's what happens along the way".
 

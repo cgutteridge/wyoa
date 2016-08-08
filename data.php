@@ -37,7 +37,7 @@ foreach( $lines as $line ) {
     # get this in shape
     $current["id"]=$current["id"][0];
     $current["title"]=$current["title"][0];
-    $current["size"]=$current["size"][0];
+    $current["size"]=(@$current["size"][0]||15);
     $current["ll"]=preg_split( '/,/',$current["ll"][0] );
     $current["ll"][0]+=0; # force integer
     $current["ll"][1]+=0;

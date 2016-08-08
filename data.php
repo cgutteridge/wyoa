@@ -37,7 +37,8 @@ foreach( $lines as $line ) {
     # get this in shape
     $current["id"]=$current["id"][0];
     $current["title"]=$current["title"][0];
-    $current["size"]=(@$current["size"][0]||15);
+    $current["size"]=@$current["size"][0];
+    if( $current["size"] == 0 ) { $current["size"] = 15; }
     $current["ll"]=preg_split( '/,/',$current["ll"][0] );
     $current["ll"][0]+=0; # force integer
     $current["ll"][1]+=0;
@@ -45,7 +46,7 @@ foreach( $lines as $line ) {
     if( @$current["next"][0]=="" ) {
       $current["next"]=array();
     } else {
-      $current["next"]=preg_split( '/,/',$current["next"][0] );
+      $current["next"]=preg_split( '/,/',preg_replace( '/ /','',$current["next"][0]) );
     }
 
     $data["nodes"][ $current["id"] ] = $current;

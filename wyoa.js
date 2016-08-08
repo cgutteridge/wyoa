@@ -186,6 +186,7 @@ $(document).ready(function(){
     inRangeId = false;
     for(var i=0; i<waypointIds.length; ++i ) {
       var node = game.nodes[waypointIds[i]];
+      if( !node ) { alert( "BUG A (sorry): Can't load waypoint "+i+": "+ waypointIds[i] + " from "+lastNodeId ); }
       waylines[i].setLatLngs( [ll, node.ll] );
       if( userPos.distanceTo( node.ll ) <= node.size ) {
         inRangeId = waypointIds[i];
@@ -209,6 +210,7 @@ $(document).ready(function(){
     
     for(var i=0; i<newWaypointIds.length; ++i ) {
       var node = game.nodes[newWaypointIds[i]];
+      if( !node ) { alert( "BUG B (sorry): Can't load waypoint "+i+": "+newWaypointIds[i] + " from "+lastNodeId ); }
 
       var waypoint = L.circle(node.ll, node.size, {
         stroke: false,

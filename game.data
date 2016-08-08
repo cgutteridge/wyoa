@@ -208,10 +208,11 @@ While he's distracted by the flying anachronism she braces herself and takes a r
 ID:back
 TITLE: Back on Track
 LL: 50.59381,-1.20555i
-His mood lightens as he walks back down the lane, sometimes you just have to let go of your mistakes and move on. He stops, a bar of music drifting on the wind catches his ear. Downhill, she would have gone downhill and found some music. He felt he was back on the right track.
+CONTENT:
+His mood lightens as he walks back down the lane, sometimes you just have to let go of your mistakes and move on. He stops, a bar of music drifting on the wind catches his ear. Downhill, she would have gone downhill and found some music. He feels he is back on the right track.
 NEXT: seb4
 
-ID: seb5
+ID: seb6
 TITLE: Winter Gardens
 LL:  50.59373,-1.20482
 SIZE: 15

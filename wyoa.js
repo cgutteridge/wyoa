@@ -13,7 +13,11 @@ $(document).ready(function(){
   var storyRoute = [];
   var fromLine = false;
   var dash = "5,10";
+  var snails = [];
 
+
+  $('#activateButton').hide();
+  $('#resetButton').hide();
   $('#storyButton').click( function() {
     $('#mapView').hide();
     $('#storyView').show();
@@ -22,41 +26,52 @@ $(document).ready(function(){
     $('#mapView').show();
     $('#storyView').hide();
   } );
+   $('#resetButton').click( function() { 
+    for(var i=0; i<waypoints.length; ++i ) {
+      map.removeLayer( waypoints[i] );
+      map.removeLayer( waylines[i] );
+    }
+    waypoints = []; 
+    waylines = []; 
+    
+    for(var i=0; i<snails.length; ++i ) {
+      map.removeLayer( snails[i] );
+    }
+    snails = [];
+
+    storyRoute = [];
+    $('#storyEnd').html("You reset the game!");
+    $('#chapters').empty();
+
+    setWaypoints( game.start );
+  });
+    
   $('#activateButton').click( function() {
     if( !inRangeId ) { return; }
    
     $('#activateButton').hide();
 
-    var node = game.nodes[inRangeId];
+    activateNode( inRangeId );
+    saveData( storyRoute );
+  } ); 
+ 
+   
+  function activateNode( newNodeId ) {
+
+    var node = game.nodes[newNodeId];
 
     var icon = L.icon( { 
-      iconUrl: 'http://data.southampton.ac.uk/map-icons/Nature/snail.png',
+      iconUrl: 'snail.png',
       iconSize: [32, 37],
       labelAnchor: [16, -18],
       iconAnchor: [16, 37]
     } );
     var marker = L.marker(node.ll,{icon:icon}).addTo(map);
-
-    if( lastNodeId ) {
-      var wayline = L.polyline([game.nodes[lastNodeId].ll,node.ll],{
-        color: 'green', 
-        dashArray: dash
-      });
-      wayline.addTo(map);
-    }
-/*
-    if( !fromLine ) {
-      fromLine = L.polyline([node.ll,node.ll],{
-        color: 'green', 
-        dashArray: dash
-      });
-      fromLine.addTo(map);
-    }
-*/
+    snails.push( marker );
 
     setWaypoints( node.next );
 
-    var chapter = $('<div class="chapter"><a name="'+inRangeId+'"></a></div>');
+    var chapter = $('<div class="chapter"><a name="'+newNodeId+'"></a></div>');
     chapter.append( $('<h3>'+node.title+'</h3>' ));
     $('#chapters').append( chapter );
     for( i=0; i<node.content.length; i++ ) {
@@ -73,22 +88,24 @@ $(document).ready(function(){
     } else {
         $('#storyEnd').append( $('<p>THE END</p><p>This story has come to an end but there are other ways you could have gone. Return to the Exchange for a new story.</p>' ));
     }
-
-
     
     $('#mapView').hide();
     $('#storyView').show();
 
-    window.location.hash = '#'+inRangeId;
+    window.location.hash = '#'+newNodeId;
     
+    if( lastNodeId ) {
+      var wayline = L.polyline([game.nodes[lastNodeId].ll, node.ll],{
+        color: 'green', 
+        dashArray: dash
+      });
+      wayline.addTo(map);
+    }
+
     //setTimeout( function() { $('#storyArea').scrollTop(chapter.offset().top); }, 1000 ); 
-    storyRoute.push( inRangeId );
-    lastNodeId = inRangeId; 
-
-    setUserPos( userPos ); // make lines update but resets inRangeId
-
-
-  } );
+    storyRoute.push( newNodeId );
+    lastNodeId = newNodeId; 
+  } 
     
   if (!("geolocation" in navigator)) {
     doom("Sorry, you need geolocation for this system to work. Either it's disabled or your phone don't do that.");
@@ -141,7 +158,7 @@ $(document).ready(function(){
   function runGame(debug) {
 
     map = L.map('map').setView([50.59466,-1.20618], 18);
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
         maxZoom: 19
     }).addTo(map);
@@ -155,8 +172,26 @@ $(document).ready(function(){
       }).addTo(map);
     }
 */
+    var resetZone = L.circle(game.nodes[game.start].ll, game.nodes[game.start].size, {
+      color: '#000',
+      fill: false
+    });
+    resetZone.addTo(map);
+    var imageUrl = 'resetlabel.png';
+    var imageBounds = [ [ 50.5946,-1.20650 ] , [ 50.5944,-1.206 ] ];
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
 
     setWaypoints( game.start );
+    var route = loadData();
+    if( route.length ) { 
+      for( var i=0; i< route.length; i++ ) {
+        activateNode( route[i] );
+      }
+      $('#mapView').show();
+      $('#storyView').hide();
+    }
+       
    
     if( debug ) { 
       map.on('click', function(e) { setUserPos( [e.latlng.lat,e.latlng.lng] ); } );
@@ -166,11 +201,47 @@ $(document).ready(function(){
     }
   }
 
+function saveData(list) {
+  var name = 'route';
+  var value = list.join( "," );
+  var days = 100;
+  if (days) { 
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function loadData() {
+  var c_name = 'route';
+  if (document.cookie.length > 0) {
+    c_start = document.cookie.indexOf(c_name + "=");
+    if (c_start != -1) {
+      c_start = c_start + c_name.length + 1;
+      c_end = document.cookie.indexOf(";", c_start);
+      if (c_end == -1) {
+        c_end = document.cookie.length;
+      }
+      var v = unescape(document.cookie.substring(c_start, c_end));
+      var list = [];
+      if( v != "" ) { list = v.split( /,/ ); }
+      return list;
+    }
+  }
+  return [];
+}
+
+
+
+
   function setUserPos( ll ) {
     // map.setView( ll ); // don't centre on the player (automatically)
     if( !userMarker ) {
       var icon = L.icon( { 
-        iconUrl: 'http://data.southampton.ac.uk/map-icons/Stores/hats.png',
+        iconUrl: 'hats.png',
         iconSize: [32, 37],
         labelAnchor: [16, -18],
         iconAnchor: [16, 37]
@@ -196,6 +267,11 @@ $(document).ready(function(){
     if( !inRangeId ) {
       $('#activateButton').hide();
     }
+    if( userPos.distanceTo( game.nodes[game.start].ll ) <= game.nodes[game.start].size ) {
+      $('#resetButton').show();
+    } else {
+      $('#resetButton').hide();
+    } 
   }
 
 
@@ -219,6 +295,7 @@ $(document).ready(function(){
       });
       waypoint.addTo(map);
       waypoints.push( waypoint );
+   
 
       var wayline = L.polyline([node.ll,node.ll],{
         color: 'red',

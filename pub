@@ -2,3 +2,4 @@
 php data.php > game.json
 git add * 
 git commit -m update-script -a
+git push

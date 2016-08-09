@@ -100,6 +100,7 @@ $(document).ready(function(){
         dashArray: dash
       });
       wayline.addTo(map);
+      snails.push(wayline);
     }
 
     //setTimeout( function() { $('#storyArea').scrollTop(chapter.offset().top); }, 1000 ); 

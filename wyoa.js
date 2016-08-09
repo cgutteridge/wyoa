@@ -118,7 +118,7 @@ $(document).ready(function(){
   }
 
   $.ajax({
-    url: "data.php",
+    url: "game.json",
     context: document.body
   }).done(function(loadedData) {
     game = loadedData;

@@ -42,6 +42,7 @@ $(document).ready(function(){
     storyRoute = [];
     $('#storyEnd').html("You reset the game!");
     $('#chapters').empty();
+    lastNodeId = false;
 
     setWaypoints( game.start );
   });
